@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://d4kur0ew5yakn"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://cuh3ggngko837" path="res://icon.svg" id="1_lxe60"]
 
-[node name="Label" type="Label" parent="."]
+[node name="Node2D" type="Node2D" unique_id=1410444888]
+
+[node name="Label" type="Label" parent="." unique_id=186312098]
 offset_left = 524.0
 offset_top = 213.0
 offset_right = 708.0
 offset_bottom = 298.0
-text = "Hello World!"
+text = "I like big jiggly balls!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=795807220]
+position = Vector2(381, 254)
+scale = Vector2(1.2421875, 1.1953125)
+texture = ExtResource("1_lxe60")
