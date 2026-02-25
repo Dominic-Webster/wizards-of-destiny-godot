@@ -11,3 +11,8 @@ text = "Hello World!
 It's Go Time!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=795807220]
+position = Vector2(381, 254)
+scale = Vector2(1.2421875, 1.1953125)
+texture = ExtResource("1_lxe60")
