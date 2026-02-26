@@ -1,21 +1,68 @@
 [gd_scene format=3 uid="uid://d4kur0ew5yakn"]
 
-[node name="Node2D" type="Node2D" unique_id=258326827]
+[ext_resource type="Texture2D" uid="uid://cuh3ggngko837" path="res://sprites/icon.svg" id="1_14rgo"]
+[ext_resource type="Script" uid="uid://b8sgmp127qnl6" path="res://scripts/Player.gd" id="2_rd8xp"]
+[ext_resource type="Script" uid="uid://d307hv6y8q8q" path="res://scripts/Card.gd" id="3_rd8xp"]
 
-[node name="Label" type="Label" parent="." unique_id=1123312387]
-offset_left = 524.0
-offset_top = 213.0
-offset_right = 708.0
-offset_bottom = 298.0
-text = "Levels JT test
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ksx7e"]
+
+[node name="Arena" type="Node2D" unique_id=258326827]
+
+[node name="Label2" type="Label" parent="." unique_id=931567292]
+offset_left = 503.0
+offset_top = 83.0
+offset_right = 655.0
+offset_bottom = 119.0
+text = "Wizards of Dihstiny"
+
+[node name="Player" type="Sprite2D" parent="." unique_id=655943783]
+position = Vector2(184, 343)
+texture = ExtResource("1_14rgo")
+script = ExtResource("2_rd8xp")
+
+[node name="Enemy" type="Sprite2D" parent="." unique_id=297521076]
+modulate = Color(0.971582, 0.17955133, 0.24036002, 1)
+position = Vector2(958, 348)
+texture = ExtResource("1_14rgo")
+
+[node name="UI" type="Control" parent="." unique_id=912426115]
+material = SubResource("CanvasItemMaterial_ksx7e")
+layout_mode = 3
+anchors_preset = 0
+offset_top = 549.0
+offset_right = 1152.0
+offset_bottom = 647.0
+
+[node name="Panel" type="Panel" parent="UI" unique_id=1285439203]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1.0
+offset_top = 58.0
+offset_right = 1152.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel2" type="Panel" parent="UI" unique_id=1476814915]
+layout_mode = 0
+offset_left = 507.0
+offset_top = -71.0
+offset_right = 642.0
+offset_bottom = 79.0
+script = ExtResource("3_rd8xp")
+
+[node name="Label" type="Label" parent="UI/Panel2" unique_id=2118422418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Attack
 "
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="." unique_id=931567292]
-offset_left = 488.0
-offset_top = 122.0
-offset_right = 696.0
-offset_bottom = 196.0
-text = "Hi Dom
-"
