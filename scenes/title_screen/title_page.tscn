@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://b85uchlvcjg4s"]
 
-[ext_resource type="Script" uid="uid://bycstnymfk6pn" path="res://scenes/title screen/title_screen.gd" id="1_qrqkg"]
-[ext_resource type="Texture2D" uid="uid://clfvlxiest5qe" path="res://scenes/title screen/Title_Screen_Backdrop.png" id="2_g7q6h"]
-[ext_resource type="Texture2D" uid="uid://cfd6li58h3ekt" path="res://scenes/title screen/Title_Screen_Text.png" id="3_i8kf4"]
-[ext_resource type="Texture2D" uid="uid://brm2o0wmqmu4l" path="res://scenes/title screen/Title_Screen_Button.png" id="4_t6qk7"]
-[ext_resource type="Texture2D" uid="uid://dngv2hxttmlq8" path="res://scenes/title screen/Title_Screen_Play.png" id="5_g7q6h"]
-[ext_resource type="Texture2D" uid="uid://b5s8mj7g2x8an" path="res://scenes/title screen/Title_Screen_Exit.png" id="5_i8kf4"]
+[ext_resource type="Script" uid="uid://bycstnymfk6pn" path="res://scenes/title_screen/title_screen.gd" id="1_qrqkg"]
+[ext_resource type="Texture2D" uid="uid://clfvlxiest5qe" path="res://scenes/title_screen/Title_Screen_Backdrop.png" id="2_g7q6h"]
+[ext_resource type="Texture2D" uid="uid://cfd6li58h3ekt" path="res://scenes/title_screen/Title_Screen_Text.png" id="3_i8kf4"]
+[ext_resource type="Texture2D" uid="uid://brm2o0wmqmu4l" path="res://scenes/title_screen/Title_Screen_Button.png" id="4_t6qk7"]
+[ext_resource type="Texture2D" uid="uid://dngv2hxttmlq8" path="res://scenes/title_screen/Title_Screen_Play.png" id="5_g7q6h"]
+[ext_resource type="Texture2D" uid="uid://b5s8mj7g2x8an" path="res://scenes/title_screen/Title_Screen_Exit.png" id="5_i8kf4"]
 
 [sub_resource type="Animation" id="Animation_v1xft"]
 length = 0.001
@@ -254,11 +254,12 @@ grow_vertical = 2
 
 [node name="Exit" type="Button" parent="Buttons" unique_id=708629904]
 layout_mode = 0
-offset_left = 47.0
-offset_top = 186.0
-offset_right = 291.0
-offset_bottom = 295.0
+offset_left = 150.0
+offset_top = 200.0
+offset_right = 394.0
+offset_bottom = 309.0
 scale = Vector2(2, 2)
+pivot_offset = Vector2(122, 54.5)
 icon = ExtResource("4_t6qk7")
 flat = true
 
@@ -269,16 +270,12 @@ texture = ExtResource("5_i8kf4")
 
 [node name="Play" type="Button" parent="Buttons" unique_id=1813044529]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -509.0
-offset_top = 190.0
-offset_right = -265.0
-offset_bottom = 299.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -400.0
+offset_top = 200.0
+offset_right = -156.0
+offset_bottom = 309.0
 scale = Vector2(2, 2)
+pivot_offset = Vector2(122, 54.5)
 icon = ExtResource("4_t6qk7")
 flat = true
 
