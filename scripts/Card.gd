@@ -2,6 +2,8 @@ extends Panel
 
 signal card_clicked
 
+var card_instance : CardInstance
+
 # Hover & Animation
 @export var hover_scale: Vector2 = Vector2(1.1, 1.1)
 @export var lerp_speed: float = 10.0
@@ -30,6 +32,7 @@ func _ready():
 	
 	set_card_size(x_size, y_size)
 	last_pos = global_position
+
 
 func _process(delta: float):
 	# 1. Scale Interpolation
@@ -76,6 +79,11 @@ func _on_mouse_exited():
 	is_hovered = false
 	target_scale = Vector2.ONE
 	z_index = 0
+
+
+func setup(instance: CardInstance):
+	card_instance = instance
+
 
 func _gui_input(event):
 	if event is InputEventMouseButton:

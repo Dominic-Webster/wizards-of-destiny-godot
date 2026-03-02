@@ -13,3 +13,4 @@ func reorder_move(card: Control, global_mouse_pos: Vector2):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	pass

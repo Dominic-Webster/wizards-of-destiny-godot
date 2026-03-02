@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bh635rshwim88"]
+
+[ext_resource type="Script" uid="uid://cxl105kpeugnu" path="res://scripts/temp_combat.gd" id="1_e2ybi"]
+[ext_resource type="Script" uid="uid://b8sgmp127qnl6" path="res://scripts/Player.gd" id="2_enxb0"]
+[ext_resource type="Script" uid="uid://bevfes5sfxjye" path="res://cards/combat_deck.gd" id="3_xfvby"]
+
+[node name="TempCombat" type="Node2D" unique_id=1118192045]
+script = ExtResource("1_e2ybi")
+
+[node name="Player" type="Node" parent="." unique_id=1292176326]
+script = ExtResource("2_enxb0")
+
+[node name="CombatDeck" type="Node" parent="." unique_id=32642842]
+script = ExtResource("3_xfvby")
