@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dc7rqa345pgir"]
+
+[ext_resource type="Texture2D" uid="uid://b7gb6pvsfpl8t" path="res://cards/sprites/Mystic Bolt.png" id="1_2gqhm"]
+[ext_resource type="Script" uid="uid://oxw2dwib6mke" path="res://cards/effects/effect_data.gd" id="1_mq51v"]
+[ext_resource type="Script" uid="uid://c3657u1f1ygos" path="res://cards/card_data.gd" id="2_2gqhm"]
+
+[sub_resource type="Resource" id="Resource_y1gjj"]
+script = ExtResource("1_mq51v")
+amount = 2
+metadata/_custom_type_script = "uid://oxw2dwib6mke"
+
+[resource]
+script = ExtResource("2_2gqhm")
+card_name = "Mystic Bolt"
+energy_cost = 3
+artwork = ExtResource("1_2gqhm")
+effects = Array[ExtResource("1_mq51v")]([SubResource("Resource_y1gjj")])
+metadata/_custom_type_script = "uid://c3657u1f1ygos"
