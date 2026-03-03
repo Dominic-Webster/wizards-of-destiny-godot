@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7gb6pvsfpl8t"
-path="res://.godot/imported/Mystic Bolt.png-83b827388858f744c438a0d09f7206f7.ctex"
+uid="uid://duw1pflwh8rxj"
+path="res://.godot/imported/Card_Frame.png-45896560877e453fcb364cf6098a6967.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/sprites/Mystic Bolt.png"
-dest_files=["res://.godot/imported/Mystic Bolt.png-83b827388858f744c438a0d09f7206f7.ctex"]
+source_file="res://cards/sprites/Card_Frame.png"
+dest_files=["res://.godot/imported/Card_Frame.png-45896560877e453fcb364cf6098a6967.ctex"]
 
 [params]
 

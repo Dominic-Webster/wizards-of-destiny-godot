@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5ufc7b6fwuj3"
-path="res://.godot/imported/Protective Barrier.png-9c63bdffec52f72d93c7e9a9844273ae.ctex"
+uid="uid://jyf2gprpxcxr"
+path="res://.godot/imported/Mystic_Bolt.png-2d35ba2db9e8e10edf4b2f69d5881d9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/sprites/Protective Barrier.png"
-dest_files=["res://.godot/imported/Protective Barrier.png-9c63bdffec52f72d93c7e9a9844273ae.ctex"]
+source_file="res://cards/sprites/Mystic_Bolt.png"
+dest_files=["res://.godot/imported/Mystic_Bolt.png-2d35ba2db9e8e10edf4b2f69d5881d9a.ctex"]
 
 [params]
 

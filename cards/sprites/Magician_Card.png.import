@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8b5bj6l8ebve"
-path="res://.godot/imported/Bolster.png-b1ca8c56eadf1a52342a03b55b642d42.ctex"
+uid="uid://5cicivr0or3l"
+path="res://.godot/imported/Magician_Card.png-d65bc11f022372d2c09ad7ae5236574b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cards/sprites/Bolster.png"
-dest_files=["res://.godot/imported/Bolster.png-b1ca8c56eadf1a52342a03b55b642d42.ctex"]
+source_file="res://cards/sprites/Magician_Card.png"
+dest_files=["res://.godot/imported/Magician_Card.png-d65bc11f022372d2c09ad7ae5236574b.ctex"]
 
 [params]
 

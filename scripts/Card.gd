@@ -120,20 +120,23 @@ func setup(instance: CardInstance):
 
 
 func _refresh_visual():
-	if not is_inside_tree() or not has_node("TextureRect"):
+	if not is_inside_tree():
 		return
 
-	var texture_rect: TextureRect = $TextureRect
+	var data : CardData = null
 
-	if card_instance and card_instance.data:
-		texture_rect.texture = card_instance.data.artwork
+	if card_instance:
+		data = card_instance.data
+	elif preview_card_data:
+		data = preview_card_data
+
+	if data == null:
 		return
 
-	if preview_card_data:
-		texture_rect.texture = preview_card_data.artwork
-		return
-
-	texture_rect.texture = null
+	$Art.texture = data.artwork
+	$Name.text = data.card_name
+	$Description.text = data.description
+	$Cost.text = str(data.energy_cost)
 
 
 func _update_visual_state():
