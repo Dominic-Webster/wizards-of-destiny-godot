@@ -41,6 +41,8 @@ var has_dragged: bool = false
 var ignore_release_toggle: bool = false
 var press_global_mouse_pos := Vector2.ZERO
 var rest_position := Vector2.ZERO
+var drag_start_position := Vector2.ZERO
+var drag_start_rest_position := Vector2.ZERO
 var target_scale: Vector2 = Vector2.ONE
 var last_pos := Vector2.ZERO
 var current_tilt := 0.0
@@ -123,7 +125,7 @@ func _refresh_visual():
 	if not is_inside_tree():
 		return
 
-	var data : CardData = null
+	var data: CardData = null
 
 	if card_instance:
 		data = card_instance.data
@@ -190,15 +192,16 @@ func _gui_input(event):
 
 				is_dragging = true
 				has_dragged = false
+				drag_start_position = position
+				drag_start_rest_position = rest_position
 				press_global_mouse_pos = get_global_mouse_position()
 				drag_offset = get_global_mouse_position() - global_position
-				top_level = true
 				_update_visual_state()
 			else:
 				is_dragging = false
-				top_level = false
 				if has_dragged:
-					rest_position = position
+					rest_position = drag_start_rest_position
+					position = drag_start_position
 
 				if ignore_release_toggle:
 					ignore_release_toggle = false

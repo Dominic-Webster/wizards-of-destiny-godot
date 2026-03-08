@@ -5,7 +5,7 @@ class_name Player
 # PLAYER STATS (Base + Modifiers)
 # ---------------------------------------------------------
 
-var class_data : ClassData
+var class_data
 
 # BASE STATS (from class)
 var base_max_health: int
@@ -51,7 +51,7 @@ var energy: int = 3
 var max_energy: int = 3
 
 
-func setup_from_class(data: ClassData):
+func setup_from_class(data):
 	class_data = data
 
 	base_max_health = data.max_health
