@@ -143,18 +143,6 @@ offset_bottom = -437.93637
 script = ExtResource("8_glrqy")
 target_path = NodePath("../Enemy")
 
-[node name="EnemyManaBar" type="ProgressBar" parent="Enemy" unique_id=106273501]
-modulate = Color(0.2, 0.6, 1, 1)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -192.26291
-offset_top = -314.16013
-offset_right = 49.964264
-offset_bottom = -412.93637
-script = ExtResource("10_mana")
-target_path = NodePath("../Enemy")
-
 [node name="EnemyName" type="Label" parent="Enemy" unique_id=1613021007]
 offset_left = -129.82382
 offset_top = -384.9363

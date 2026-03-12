@@ -141,15 +141,18 @@ func perform_move(target : Node) -> void:
 	var move = select_move()
 	if move == null:
 		return
+	print("Enemy playes: ", move.name)
 	
 	var dmg = move.base_damage
 	target.take_damage(dmg)
+	print(" - Enemy dealt ", dmg, " damage")
 	
 	#Apply status effects from the move
 	if move.status_effects:
 		for status_name in move.status_effects.keys():
 			var stacks = move.status_effects[status_name]
 			target.apply_status(status_name, stacks)
+			print(" - Enemy applied ", status_name, " x", stacks)
 
 
 # ---------------------------------------------------------

@@ -162,6 +162,7 @@ func perform_strike(target):
 	#deal normal damage once
 	if dmg > 0:
 		target.take_damage(dmg)
+	print("Strike deals ", dmg, " damage")
 	
 	#elemental damage
 	for element in strike_elemental_damage.keys():
@@ -171,10 +172,12 @@ func perform_strike(target):
 			#APPLY FREEZE/CRIT LATER DOWN THE LINE
 			elemental_dmg = deal_damage(elemental_dmg, element)
 			target.take_damage(elemental_dmg, element)
+			print(" - Deals ", elemental_dmg, " ", element, " damage")
 	
 	#status effects
 	for effect in strike_statuses:
 		target.apply_status(effect["name"], effect["stacks"])
+		print(" - Apply ", effect["name"], " x", effect["stacks"])
 
 
 
