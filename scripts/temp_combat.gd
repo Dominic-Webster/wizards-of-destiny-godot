@@ -461,55 +461,8 @@ func _apply_effects(effects : Array, source) -> void:
 			if "undodgeable" in effect.tags:
 				if target.status_effects.has("evasive"):
 					target.status_effects["evasive"] = 0
-		
-			#---------------
-			# Effect Execution
-			#---------------
-		
-			match effect.effect_type:
 			
-				EffectData.EffectType.DAMAGE:
-					for i in range(effect.hits):
-						var dmg = source.deal_damage(
-							effect.amount,
-							effect.element,
-							effect.include_base_damage
-						)
-						target.take_damage(dmg)
-				
-				EffectData.EffectType.BLOCK:
-					source.add_block(effect.amount)
-				
-				EffectData.EffectType.APPLY_STATUS:
-					target.apply_status(effect.get_status_name(), effect.amount)
-					
-				EffectData.EffectType.MODIFY_STAT:
-					source.modify_stat(effect.get_stat_name(), effect.amount, effect.duration_turns)
-				
-				EffectData.EffectType.ADD_STRIKE_DAMAGE:
-					source.add_strike_damage(effect.amount)
-				
-				EffectData.EffectType.MULTIPLIER_DAMAGE:
-					source.apply_damage_multiplier(effect.multiplier)
-				
-				EffectData.EffectType.DRAW_CARDS:
-					for i in range(effect.amount):
-						if hand_cards.size() >= deck.max_hand_size:
-							break
-						var card = deck.draw_card()
-						if card:
-							spawn_card(card)
-				
-				EffectData.EffectType.DISCARD_CARDS:
-					discard_selected_cards()
-				
-				EffectData.EffectType.GAIN_ENERGY:
-					source.set_energy(source.energy + effect.amount)
-				
-				EffectData.EffectType.EXHAUST_SELF:
-					if source.has_method("set_exhaust_flag"):
-						source.set_exhaust_flag()
-
+			effect.apply(source, target, self)
 
 func _build_enemy_move_name() -> String:
 	var pool: Array[String] = enemy_physical_move_names
@@ -600,7 +553,7 @@ func _is_valid_target(target) -> bool:
 	return target != null and is_instance_valid(target)
 
 
-func _get_effect_targets(effect: EffectData, source) -> Array:
+func _get_effect_targets(effect: Effect, source) -> Array:
 	var targets: Array = []
 	
 	match effect.target_type:

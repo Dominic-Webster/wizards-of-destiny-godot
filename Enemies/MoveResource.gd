@@ -9,7 +9,7 @@ class_name MoveResource
 
 @export var name : String = "Attack"
 
-@export var effects : Array[EffectData] = []
+@export var effects : Array[Effect] = []
 
 @export var weight : int = 100 # used for enemy AI selection
 

@@ -14,4 +14,5 @@ enum CardFlag { NONE, RITUAL, PASSIVE }
 
 @export var artwork : Texture2D
 
-@export var effects : Array[EffectData]
+@export var effects : Array[Effect]
+#@export var effects : Array[EffectData]
