@@ -43,6 +43,11 @@ enum StatType {
 	DODGE
 }
 
+enum TargetType {
+	SELF,
+	ENEMY
+}
+
 @export var effect_type: EffectType
 
 @export var amount : int = 0
@@ -52,6 +57,8 @@ enum StatType {
 
 @export var element : String = ""
 @export var include_base_damage : bool = false
+
+@export var target_type : TargetType = TargetType.ENEMY
 
 @export var status_type : StatusType
 @export var stat_type : StatType

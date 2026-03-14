@@ -8,6 +8,7 @@
 script = ExtResource("1_qu7nd")
 effect_type = 1
 amount = 5
+target_type = 0
 status_type = 2
 metadata/_custom_type_script = "uid://oxw2dwib6mke"
 

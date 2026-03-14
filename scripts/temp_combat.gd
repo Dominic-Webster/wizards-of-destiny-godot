@@ -292,7 +292,7 @@ func play_card(card_node) -> bool:
 		return false
 	
 	# Apply effects
-	_apply_effects(instance.data.effects, player, opponent)
+	_apply_effects(instance.data.effects, player)
 	
 	is_play_animating = true
 	_announce_move(true, instance.data.card_name)
@@ -392,7 +392,7 @@ func update_enemy_intent() -> void:
 			enemy_intent_2.texture = null
 		
 		if opponent.get_next_move().intent_icons.size() > 2:
-			enemy_intent_2.texture = opponent.get_next_move().intent_icons[2]
+			enemy_intent_3.texture = opponent.get_next_move().intent_icons[2]
 		else:
 			enemy_intent_3.texture = null
 	
@@ -416,7 +416,7 @@ func _enemy_take_turn() -> void:
 	
 	_announce_move(false, move.name)
 	
-	_apply_effects(move.effects, opponent, player)
+	_apply_effects(move.effects, opponent)
 	
 	# handle preventing too many repeat moves
 	if move == opponent.last_move:
@@ -429,14 +429,12 @@ func _enemy_take_turn() -> void:
 		await get_tree().create_timer(_scaled_time(enemy_move_delay)).timeout
 
 
-func _apply_effects(effects : Array, source, target) -> void:
+func _apply_effects(effects : Array, source) -> void:
 	if effects == null:
 		return
 	
 	# safety checks for valid targets
 	if _is_valid_target(source) == false:
-		return
-	if _is_valid_target(target) == false:
 		return
 	
 	for effect in effects:
@@ -446,64 +444,71 @@ func _apply_effects(effects : Array, source, target) -> void:
 		if randf() > effect.chance:
 			continue
 		
-		#---------------
-		# Tag Handling
-		#---------------
+		var targets = _get_effect_targets(effect, source)
 		
-		if "random_element" in effect.tags:
-			var elements = ["burn", "freeze", "shock"]
-			effect.status_name = elements[randi() % elements.size()]
+		for target in targets:
+			if _is_valid_target(target) == false:
+				continue
 		
-		if "undodgeable" in effect.tags:
-			if target.status_effects.has("evasive"):
-				target.status_effects["evasive"] = 0
+			#---------------
+			# Tag Handling
+			#---------------
 		
-		#---------------
-		# Effect Execution
-		#---------------
+			if "random_element" in effect.tags:
+				var elements = ["burn", "freeze", "shock"]
+				effect.status_name = elements[randi() % elements.size()]
 		
-		match effect.effect_type:
+			if "undodgeable" in effect.tags:
+				if target.status_effects.has("evasive"):
+					target.status_effects["evasive"] = 0
+		
+			#---------------
+			# Effect Execution
+			#---------------
+		
+			match effect.effect_type:
 			
-			EffectData.EffectType.DAMAGE:
-				for i in range(effect.hits):
-					var dmg = source.deal_damage(
-						effect.amount,
-						effect.element,
-						effect.include_base_damage
-					)
-					target.take_damage(dmg)
-			
-			EffectData.EffectType.BLOCK:
-				source.add_block(effect.amount)
-			
-			EffectData.EffectType.APPLY_STATUS:
-				target.apply_status(effect.get_status_name(), effect.amount)
-			
-			EffectData.EffectType.MODIFY_STAT:
-				source.modify_stat(effect.get_stat_name(), effect.amount, effect.duration_turns)
-			
-			EffectData.EffectType.ADD_STRIKE_DAMAGE:
-				source.add_strike_damage(effect.amount)
-			
-			EffectData.EffectType.MULTIPLIER_DAMAGE:
-				source.apply_damage_multiplier(effect.multiplier)
-			
-			EffectData.EffectType.DRAW_CARDS:
-				for i in range(effect.amount):
-					if hand_cards.size() >= deck.max_hand_size:
-						break
-					var card = deck.draw_card()
-					if card:
-						spawn_card(card)
-			
-			EffectData.EffectType.DISCARD_CARDS:
-				discard_selected_cards()
-			
-			EffectData.EffectType.GAIN_ENERGY:
-				source.set_energy(source.energy + effect.amount)
-			EffectData.EffectType.EXHAUST_SELF:
-				if source.has_method("set_exhaust_flag"):
-					source.set_exhaust_flag()
+				EffectData.EffectType.DAMAGE:
+					for i in range(effect.hits):
+						var dmg = source.deal_damage(
+							effect.amount,
+							effect.element,
+							effect.include_base_damage
+						)
+						target.take_damage(dmg)
+				
+				EffectData.EffectType.BLOCK:
+					source.add_block(effect.amount)
+				
+				EffectData.EffectType.APPLY_STATUS:
+					target.apply_status(effect.get_status_name(), effect.amount)
+					
+				EffectData.EffectType.MODIFY_STAT:
+					source.modify_stat(effect.get_stat_name(), effect.amount, effect.duration_turns)
+				
+				EffectData.EffectType.ADD_STRIKE_DAMAGE:
+					source.add_strike_damage(effect.amount)
+				
+				EffectData.EffectType.MULTIPLIER_DAMAGE:
+					source.apply_damage_multiplier(effect.multiplier)
+				
+				EffectData.EffectType.DRAW_CARDS:
+					for i in range(effect.amount):
+						if hand_cards.size() >= deck.max_hand_size:
+							break
+						var card = deck.draw_card()
+						if card:
+							spawn_card(card)
+				
+				EffectData.EffectType.DISCARD_CARDS:
+					discard_selected_cards()
+				
+				EffectData.EffectType.GAIN_ENERGY:
+					source.set_energy(source.energy + effect.amount)
+				
+				EffectData.EffectType.EXHAUST_SELF:
+					if source.has_method("set_exhaust_flag"):
+						source.set_exhaust_flag()
 
 
 func _build_enemy_move_name() -> String:
@@ -593,6 +598,25 @@ func _animate_played_card(card_node) -> void:
 
 func _is_valid_target(target) -> bool:
 	return target != null and is_instance_valid(target)
+
+
+func _get_effect_targets(effect: EffectData, source) -> Array:
+	var targets: Array = []
+	
+	match effect.target_type:
+		EffectData.TargetType.SELF:
+			targets.append(source)
+		
+		EffectData.TargetType.ENEMY:
+			targets.append(_get_opponent(source))
+	
+	return targets
+
+# helper function
+func _get_opponent(source):
+	if source == player:
+		return opponent
+	return player
 
 
 func _can_player_continue_turn() -> bool:

@@ -168,8 +168,8 @@ theme_override_font_sizes/font_size = 34
 horizontal_alignment = 2
 
 [node name="EnemyIntent1" type="TextureRect" parent="." unique_id=468170854]
-offset_left = 1226.25
-offset_top = 16.25
+offset_left = 1215.0
+offset_top = 2.5
 offset_right = 1311.25
 offset_bottom = 93.75
 
